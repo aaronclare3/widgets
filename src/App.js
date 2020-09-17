@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Accordion from './components/Accordion';
+import Search from './components/Search';
+import Dropdown from './components/Dropdown';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const items = [
+    {
+        title: 'What is react?',
+        content: 'react is a front end javascript framework'
+    },
+    {
+        title: 'Why use React?',
+        content: 'react is a favorite JS library among engineer'
+    },
+    {
+        title: 'how do you use react?',
+        content: 'you use react by creating components'
+    }
+];
+
+const options = [
+    {
+        label: 'The Color Red',
+        value: 'red'
+    },
+    {
+        label: 'The Color Blue',
+        value: 'blue'
+    },
+    {
+        label: 'The Color Green',
+        value: 'green'
+    },
+]
+
+export default () => {
+    const [selected, setSelected] = useState(options[0]);
+
+    return (
+        <div>
+            {/* <Accordion items={items} /> */}
+            {/* <Search /> */}
+            <Dropdown 
+                selected={selected} 
+                onSelectedChange={setSelected} 
+                options={options} 
+            />
+        </div>
+    ) 
 }
-
-export default App;
